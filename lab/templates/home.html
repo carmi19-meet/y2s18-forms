@@ -8,14 +8,17 @@
     <h1>Welcome to the home page!</h1>
     
     <hr>
-    
+    <form action="/add" method="get">
+        <input type="submit" value="add new student">
+    </form>
     {% for student in students %}
     <p>
-	    Name: <a href="{{url_for('display_student', student_id=student.student_id)}}">{{student.name}}</a><br>
+	    Name: {{student.name}}<br>
 	    Class: {{student.year}}<br>
-	    Finished Lab: {{student.finished_lab}}
     </p>
+    <form action="{{url_for('display_student', student_id=student.student_id)}}" method="get">
+        <input type="submit" value="go to {{student.name}} page">
+    </form>
     {% endfor %}
-
 </body>
 </html>

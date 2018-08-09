@@ -16,14 +16,14 @@ def add_student_route():
 		return render_template('add.html')
 	else:
 		add_student(request.form['student_name'],
-			request.form['student_year'], False)
+			int(request.form['student_year']), False)
 		return render_template('add.html')
 
 @app.route('/delete/<int:student_id>', methods=['POST'])
 def delete(student_id):
 	a = query_by_id(student_id)
 	delete_student(a.name)
-	return redirect(url_for('/'))
+	return redirect(url_for("home"))
 
 
 
